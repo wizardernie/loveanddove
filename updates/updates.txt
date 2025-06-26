@@ -9,10 +9,10 @@ file,ghost/master/ld_anchor.dicc5dc1e94e578f2392c663c114aa4e3fbsize=4942date=
 file,ghost/master/ld_bootend.dic4b278ce556438b9457f628c614ec215esize=35086date=2025-06-26T21:31:04
 file,ghost/master/ld_commu.diceaa3653bf0ad6a6c9712dd41ed3fa11dsize=6741date=2023-09-29T11:36:05
 file,ghost/master/ld_etc.dicd293ee3ad62a1e42de76368992db766dsize=37662date=2025-06-26T15:04:22
-file,ghost/master/ld_menu.dic1a0f416150dce2126ae5d4c43564257esize=33960date=2025-06-26T19:38:31
+file,ghost/master/ld_menu.dic273cdcbdc2de3bfdb4fa76a15f2318d4size=33960date=2025-06-26T21:39:52
 file,ghost/master/ld_mouse.dic16657f647ae4973c203aaa202d8cd2e1size=7898date=2025-06-26T21:04:02
 file,ghost/master/ld_nameteach.dic986015c45d96dc6b1ee36268b02fc358size=8509date=2025-06-26T15:34:02
-file,ghost/master/ld_string.dic8c6d8066ad68d03b43aac28c9d005295size=9085date=2025-06-26T21:18:56
+file,ghost/master/ld_string.dic9067bb3678cf7cdf1b514d714cb43160size=9086date=2025-06-26T21:39:04
 file,ghost/master/ld_word.dicc3e7f2fdf1fd536a37eb8dd48b0916a5size=532date=2025-06-26T19:58:00
 file,ghost/master/loveanddove.ico9b275939dbf11bd2ec5f4ef3e00fa06asize=1148date=2014-11-10T08:17:39
 file,ghost/master/mciaudior.dllb1082bccd2aac2017f7936baf2d967b3size=29696date=2003-03-14T07:23:26

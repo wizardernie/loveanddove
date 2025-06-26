@@ -543,8 +543,8 @@ OnChoiceTimeout
 KeroMenuIntros : nonoverlap
 {
 	"\1\s[10]\b[2]"
-	"\1\s[15]\b[2]"
-	"\1\s[16]\b[2]"
+	"\1\s[10]\b[2]"
+	"\1\s[10]\b[2]"
 	
 	//You've seen so far that you can set up multiple options for menu introductions. You can also set up multiple poses to match up to multiple dialogue. So for example, when you open Triangle's menu, he may randomly do any of these three poses, and randomly choose from any of the four dialogue options below, before continuing with his menu. Make a close note of the -- dashes breaking these up.
 	//if you aren't interested in such tomfoolery, you can cut them each down to one line.
