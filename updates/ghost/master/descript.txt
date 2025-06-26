@@ -1,0 +1,19 @@
+﻿charset,UTF-8
+
+name,Love and Dove
+type,ghost
+
+sakura.name,Dove
+kero.name,Love
+
+craftman,wizardernie
+craftmanw,wizardernie
+craftmanurl,https://wizardernie.nekoweb.org
+
+sstp.allowunspecifiedsend,0
+shiori,yaya.dll
+
+icon,loveanddove.ico
+
+//change when u make balloon
+//balloon,z_simple

@@ -1,0 +1,7 @@
+﻿charset,UTF-8
+type,ghost
+name,Love and Dove
+directory,wizardernie_loveanddove
+
+//uncomment when u make their balloon
+//balloon.directory,yourballoon

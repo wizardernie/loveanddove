@@ -1,0 +1,36 @@
+﻿apcclasses
+{
+	"Wrestling!"
+	"Tennis!"
+	"Volleyball!"
+	"Swimming!"
+	"Batting practice!"
+	"Weight lifting!"
+	"Aerobics!"
+	"Yoga!"
+	"Sauna time!"
+	"Hit the public baths!"
+}
+
+foodstuffs
+{
+	"Melon fizzy!"
+	"Apple pie!"
+	"Toffee sundae!"
+	"Souffle pancakes!"
+	"Vanilla ice cream!"
+	"Bingsu!"
+	"Strawberry parfait!"
+	"Mango sticky rice!"
+	"Matcha parfait!"
+	"Thai milk tea!"
+	"Brown sugar soy milk tea with pearls!"
+	"Caramel milkshake!"
+	"Chocolate crepe!"
+}
+
+ //dont touch
+ On_\person
+{
+ 	person
+}

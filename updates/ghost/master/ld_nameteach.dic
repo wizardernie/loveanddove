@@ -1,0 +1,151 @@
+﻿//---------------------------The User's Name--------------------------
+//This .dic file has to do with setting the user's name and suffix/prefix (optional). You may recall some of the functions mentioned here from bootend.dic. As you can see, you can spread functions across multiple .dic files if you like! Just remember my note in bootend.dic about the different between OnFunction and Function.
+
+//This file is fairly short, so don't worry! It shouldn't take you too long to finish.
+
+//Make sure to read the walkthrough (http://www.ashido.com/ukagaka/walkthrough.html) for more details about how to properly format ghost dialogue!
+//I will reiterate that you should be editing these in Notepad++, and in particular, you should set the Language to C (or Java I guess) to properly highlight all the text. It will make things A LOT EASIER for you, trust me! It will also help you keep track of your brackets in case you forget some. If you click on a line with a bracket in Notepad++, it should highlight where the other bracket ends, or turn purple if there's no finishing bracket (which you should definitely fix!)
+//It will also highlight my commented lines in green, so you'll know where they are. Any line beginning with // is a commented line that the code will not read. It's just for your reference!
+
+//If you see a big block of commented text you want to uncomment, highlight the text and then hit ctrl-shift-k in Notepad++ and that should uncomment it. Mostly this is intended for advanced users.
+
+
+//--OnTeachName
+//This is called from the config menu in the main character's double click menu when the user says they want to change their name. If you look in menu.dic you'll see the code leading to here.
+
+OnTeachName	
+{
+	if reference0 == "TEACHNAME" //ignore this
+		{
+		"\0\s[0]Oh, you want to change your name? Cool! What's the new one?\![open,inputbox,OnNameTeach,-1]\e"
+		}
+	else
+		{
+
+		}
+}
+
+OnNameTeach
+{
+	tempname = reference0 //this stores the name value from reference0 in tempname
+	
+	
+	reference0 = TOLOWER(reference0) //changes it to lowercase
+	reference0 = REPLACE(reference0," ","") //removes spaces
+	reference0 = REPLACE(reference0,".","") //removes periods
+	reference0 = REPLACE(reference0,"-","") //removes dashes
+	
+	//Those extra TOLOWER/REPLACE things up there basically clean up the user's input so you don't have to check for Girl, GIRL, girl, GiRl, etc. It'll make it much easier to check for any specific name, since you won't have to account for any edge cases. Note that the names you will be checking for should be in all lowercase, however.
+	
+	if reference0 == "dove" //this checks to see if the user input any variation of the name "Girl". You may want to put in a check here if the user tries to name themselves the same name as your characters, since that could be confusing in dialogue. Or just a response to any kind of strange name, like Barack Obama or Cindy Crawford or Mike Nelson or Random Hajile. Or you can prevent certain offensive names if you don't want users using them. Really the power is yours here.
+	{
+		"\0\s[0]Hey, that's my name!.\w8\1\s[10]Oops, that might be confusing. Can we call you something else?\![open,inputbox,OnNameTeach,-1]"
+		//Note here that it's using the same tag as above to reopen the text box to let the user put in another name. You can replace the dialogue with whatever as long as you keep the \![open,inputbox,OnNameTeach,-1] tag.
+	}
+	elseif reference0 == "love" //like the above, this checks to see if the user put in Triangle. Again, this is mostly to avoid confusion in dialogue between the user and the characters.
+	{
+		"\1\s[10]Wait, that's my name! Maybe let's try another name, ok?\![open,inputbox,OnNameTeach,-1]"
+		//See again that this ends with the same tag to reopen the input box. Again, replace but keep the \![open,inputbox,OnNameTeach,-1] tag at the end.
+	}
+	elseif reference0 == "" //This is if the user doesn't put in a name at all, since that'd also get awkward in dialogue.
+	{
+		username = "USER" //this sets the user's name to USER.
+		
+		"\1\s[10]Hm, nothing to tell us then?\w8\0\s[0]That's ok! We can call you USER.\e"
+		//You can change this snip to whatever.
+	}
+	else //if the user put in something not specified above, ie a proper name the ghost can use. 
+	{
+		username = tempname
+		"\0\s[0]Ok! Your name is %(username)!\e"
+		//change this dialogue to whatever you like.
+	}
+}
+
+//The rest of this is for advanced users who want to add titles to their user's names. If you're not interested, you can ignore this and move on to another file.
+
+
+//*********************Advanced User Info*******************************
+	//If you want to let your user add a title to their name, like Lady or Master, then you'll want to expand this section a little. This check would go AFTER the check above for a valid name, leading to further choices instead of setting the name. So you'd want to uncomment and put in the else above...
+	
+	// {
+		// "\0\s[0]Do you want a title?\w4\n\n[half]\![*]\q[Nope,titlenone]\n"
+		// //You can replace "\0\s[0]Do you want a title?", but don't touch the rest of it.
+		// --
+		// if presuffix == "masculine" //this value was defined in bootend.dic and menu.dic when the user chose their pronouns. Thus, if someone chose he/him pronouns, they would be able to choose Mr. or Master. If the user hasn't set their pronouns, or that's not a feature of your ghost, you can just put all the choices together without these presuffix checks and let the user decide from all.
+		// {
+		// "\![*]\q[Mr.,titlemr]\n/
+		// \![*]\q[Master,titlemaster]\n"
+		// }
+		// elseif presuffix == "feminine" //Likewise, if someone chose she/her pronouns, they could choose Ms. or Lady.
+		// {
+		// "\![*]\q[Ms.,titlems]\n/
+		// \![*]\q[Lady,titlelady]\n"
+		// }
+		// -- //the titles after this are gender neutral and will appear for all users. If you want to remove the masculine and feminine titles entirely, just delete from the curly bracket one line up to the double dashes above "if presuffix == "masculine". That should leave only the neutral titles. Make sure to leave a set of double dashes above the neutral titles though. You can also just put the feminine and masculine titles in here too if you want all titles to be available to all users at all times.
+		// "\![*]\q[-ssi,titlessi]\n/
+		// \![*]\q[-san,titlesan]\e"
+		// //Note that the final line here ends with \e instead of \n/, since it is the final option. Make sure your final option (and ONLY your final option) always ends with \e. More on that in the box below.
+	// }
+	//Adding new titles for your users to use is simply a matter of copy and pasting creatively. You can see how the ghost puts together the title and your name in the Select. sections below. Above, you simply need to add a new option and link it to a new Select. For example, you could add "\![*]\q[Mistress,titlemistress]\n/" between Ms. and Lady up there, then write up a Select.titlemistress below that fits the pattern of the others.
+	//***********************************************************************
+	
+	//The following Select.title[word] functions add the title to the user's name, then go to the final step, NameDone. You don't have to touch any of these. Advanced users, notice how these match the linked functions in the choices above.
+	
+Select.titlenone
+{
+		username = tempname
+		NameDone
+}
+
+Select.titlemr
+{
+		username = "Mr. " + tempname
+		NameDone
+}
+
+Select.titlemaster
+{
+		username = "Master " + tempname
+		NameDone
+}
+		
+Select.titlems
+{
+		username = "Ms. " + tempname
+		NameDone
+}
+
+Select.titlelady
+{
+		username = "Lady " + tempname
+		NameDone
+}
+
+Select.titlessi
+{
+		username = tempname + "-ssi"
+		NameDone
+}
+
+Select.titlesan
+{
+		username = tempname + "-san"
+		NameDone
+}
+
+//--NameDone
+//This is the final bit of dialogue your ghosts will have when the user changes their name and adds a title above. There is a special section here for when the user first boots the ghost, if you uncommented that in bootend.dic. If you aren't doing either of those things, then you can ignore this.
+
+NameDone
+{
+	if firstboot == 1 //will call the dialogue only on first boot
+	{
+		firstboot = 0 //this turns the flag off
+		"\0\s[0]Thanks for telling us your name, %(username)!\w8\1\s[10]We'll make sure to use it from now on when talking to you.\e"
+	}
+	else
+	{
+	"\0\s[0]Ok, your name is now %(username)!\e"
+	}	
+}

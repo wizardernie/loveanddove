@@ -1,0 +1,53 @@
+﻿seriko.alignmenttodesktop,bottom
+
+seriko.use_self_alpha,1
+
+charset,UTF-8
+type,shell
+name,Love and Dove
+craftman,wizardernie
+craftmanurl,https://wizardernie.nekoweb.org
+
+sakura.balloon.offsetx,0
+sakura.balloon.offsety,0
+kero.balloon.offsetx,0
+kero.balloon.offsety,0
+sakura.balloon.alignment,none
+kero.balloon.alignment,none
+
+//dont touch
+shiori.logo.filename,resources\niseshiori.png
+shiori.logo.x,16
+shiori.logo.y,256
+
+//menu text colour
+menu.background.font.color.r,72
+menu.background.font.color.g,56
+menu.background.font.color.b,37
+
+//menu text highlight
+menu.foreground.font.color.r,176
+menu.foreground.font.color.g,232
+menu.foreground.font.color.b,232
+
+
+//menu disabled text
+menu.disable.font.color.r,79
+menu.disable.font.color.g,69
+menu.disable.font.color.b,56
+
+
+//menu horizontal bar colour
+menu.separator.color.r,72
+menu.separator.color.g,56
+menu.separator.color.b,37
+
+//menu bg image alignment
+menu.background.alignment,righttop
+menu.foreground.alignment,righttop
+menu.sidebar.alignment,bottom
+
+//menu images loc
+menu.background.bitmap.filename,menu_background.png
+menu.foreground.bitmap.filename,menu_foreground.png
+menu.sidebar.bitmap.filename,menu_sidebar.png

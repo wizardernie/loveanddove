@@ -1,0 +1,344 @@
+﻿//dont touch
+OnAiTalk
+ {
+	if RAND(100) < communicateratio
+ 	{
+ 		StartCommunicate
+	}
+ 	else
+	{
+			if CHAIN.IDName == "" {
+ 				lastTalk = RandomTalk
+			}
+			else {
+				lastTalk = ChainTalk
+			}
+			lastTalk
+	}
+ }
+ 
+ 
+ //*********************Advanced User Info*******************************
+//These text boxes are meant for those who have an interest in expanding or using more complicated functions in their ghost. Also for my own reference in the future since I plan on using this template too, haha. If you have no interest in any of this and just want to keep things as simple as possible, feel free to skip these boxes.
+
+//--Mikiretalk, or the Off-Screen Boundary Check--
+
+//This has been a feature in the template for a very long time, and while it's enjoyable enough for some, for others it can be rather irritating or goes against what their ghost is. So to that end, I'm making this an opt-in feature. Basically, this flag checks to see if the ghost is off the screen and haves them say something to the user to get them to move them back on screen. If you want to enable this, it'll take a bit of fussing around. You're going to want to add the mikireflag check into OnAiTalk above. You can see how so below. Then you'll have to follow up on the flag check later down at OnSecondChange. Keep an eye out.
+
+ 
+//
+// OnAiTalk
+ // {
+	// if RAND(100) < communicateratio
+ 	// {
+ 		// StartCommunicate
+	// }
+ 	// else
+	// {
+ 		// if mikireflag == 0
+		// {
+			// if CHAIN.IDName == "" {
+ 				// lastTalk = RandomTalk
+			// }
+			// else {
+				// lastTalk = ChainTalk
+			// }
+			// lastTalk
+		// }
+ 		// else
+		// { 
+		// MikireTalk
+ 		// }
+	// }
+ // }
+//***********************************************************************
+
+RandomTalk : nonoverlap_pool
+{
+	//"\0\s[0]"
+	//"\1\s[10]"
+	//"\0\s[0]This is dialogue referring to %(username).\w8\1\s[10]Hello, %(username).\e"
+	//if timeslot == "earlymorning"
+	//if weekday == 1
+	
+	//fashion--------------------------------------------------
+	"\0\s[0]Did you see the new wedges I got?\s[2]\w8\1\s[10]Yes, they're so cute! I'm jealous!\s[11]\e"
+	
+	"\0\s[0]Did you want to go get-\1\s[10]Our nails done? \w3Yes, let's go!!\s[12]\w8\0\s[2]\n\n\f[italic,true]It's like they read my mind~"
+		
+	"\1\s[0]Sooo happy I snagged some Valerie Eaststone jewellery at the markets yesterday. So cheap, but they weren't knockoffs!\e"
+	
+	"\0\s[0]Do you think this top goes with my eyes?\w8\1\s[10]Of course!\e"
+	
+	"\1\s[10]When do you think was the last time you wore a masculine outfit?\w8\0\s[2]I can't even remember."
+	
+	"\1\s[10]Sooo, do you wanna come wig shopping with me?\w8\0\s[2]Yes yes yes!\e"
+	
+	"\0\s[0]The aerobics have got to be my favourite class for fashion.\w8\1\s[10]Yeah, you go all out with the retro look!\w8\0\s[2]\n\nCan you fault a guy for loving leg warmers and leotards?\e"
+	
+	"\1\s[10]Even though it's simplistic, I think the wrestling uniform is my favourite.\w8\0\s[6]That's because you got that cute pink uniform...\w8\1\s[10]\n\nDon't worry, I'm sure they'll be back in stock soon, hehe.\e"
+	
+	if nowshell == "master" //using master/default shell
+	{
+	"\0\s[0]Love, that green really is your colour!\1\s[12]\e"
+	
+	"\1\s[12]I love when we can get our outfits to match like this.\w8\0\s[2]Me too.\e"
+	
+	"\0\s[0]\f[italic,true]Having someone to match outfits with is like a dream come true~\e"
+	}
+	
+	if month == 3 || month == 4
+	{
+		"\0\s[0]Looks like we'll have to start digging out the winter wardrobe soon!\e"
+		
+		"\1\s[11]Mm, this cold weather is getting me ready to plan my winter outfits!\e"
+	}
+	
+	//outings
+	"\1\s[10]Hmmm, I'm really craving that cake we had last week.\w8\0\s[0]Ah, the strawberry and cream one? We should get another to share, hehe.\e"
+	
+	"\1\s[10]Did you see the photos I put up on my blog yet?\w8\0\s[0]Sure did! You're so talented, hehe.\w8\1\s[12]\n\nWell, it helps when I have a cute subject.\w8\0\s[0]\n\n\f[italic,true]I can't tell if he's talking about the souffle pancakes or me...\e"
+	
+	"\1\s[10]I think I found us a new workout! \w5The arcade got the new DDR machines!\w8\0\s[2]Let's sweat to the rhythm!\e"
+	
+	"\0\s[22]...\w8\w8\1\s[10]Don't tell me you're still jealous of those waitresses.\w8\0\s[6]\n\nThey had the perfect uniform! Why wasn't that diner open when \f[bold,true]I\f[bold,false] was looking for work.\e"
+	
+	"\0\s[22]I read your blog yesterday... I don't think I'll ever be the same.\w8\1\s[14]Hey you can't say it like that! You might give %(username) the wrong idea.\w8\0\s[9]\n\nAh, that's true! I'm only so sad because I got sick for a week and couldn't go with Love to the Tropical Princess Sunset pop up store... It's my absolute favourite brand.\w8\1\s[17]\n\n\f[italic,true]He's forgetting to mention we were on the phone the whole time, and he made me buy one of everything...\e"
+	
+	"\0\s[0]You know what I'm craving?\1\s[19]%(foodstuffs)"
+	
+	//mundane--------------------------------------------------
+	"\1\s[10]So, did you get your membership to the centre renewed?\w8\0\s[0]Renewed? Since when did we have to do that?\w8\1\s[10]\n\nWait... aren't you a paying member?\s[33]\w8\0\s[1]\n\n Nope, that costs too much. I have the free one and get paid access through you.\w8\1\s[17]\n\n So that's why you're always making me put you down as a plus one...\e"
+	
+	"\0\s[0]Hey Love, what activity should we do next in the centre?\w8\1\s[12] %(apcclasses)\e"
+	
+	"\0\s[0]Hey, how many days a week do you workout?\w8\1\s[10]What do you mean? All seven of course.\w8\0\s[22]\n\nSuch discipline...\e"
+	
+	"\0\s[0]Hehe, I love the music they play in the gym here.\s[2]\w8\e"
+	
+	"\1\s[10]It's so cute that the centre uses apple-scented air freshener\s[12]\w8\e"
+	
+	"\0\s[0]With a job like mine, you'd think I'd never have time to come to the centre so often,\w5 but I always have time to squeeze in some socialising\s[1]\w8\e"
+	
+	"\1\s[10]\f[italic,true]Hmmm, I should probably go back home to get my chores done...\e"
+	
+	//flirty---------------------------------------------------
+	"\1\s[10]Mmm, I'm craving another sauna visit.\w8\0\s[4]Me too\w2\1\s[15]\e"
+	
+	"\1\s[10]Hey, did you hear there's some wrestling classes starting up soon?\w8\0\s[0]Really? Maybe we should go check it out.\w8\1\s[10]\n\nYeah, maybe we can practice\s[15] pinning each other.\w5\0\s[1]\e"
+	
+	"\0\s[4]So, um, those new special bikinis I ordered for us arrived...\w8\1\s[10]Huh? What-\w2 oh yeah those ones...\s[15]\w4hehe Maybe we should try them on together, just to make sure they look good.\e"
+	
+	"\1\s[10]So there's this dress I bought, but it's really difficult to zip up.\w5 Maybe you could come help me tomorrow?\s[15]\w8\0\s[2] Anything for you~\e"
+	
+	"\1\s[12]I saw your tan lines on the beach yesterday. They look really nice\w8\0\s[0]You think so? I like having them, but some people say I should get rid of them.\w8\1\s[17]\n\nNever get rid of them.\e"
+	
+	"\0\s[0]Is it just me, or have you muscles gotten bigger lately?\w8\1\s[15]Hehe, you noticed?"
+		
+	"\1\s[12]The sauna and public baths have got to be my favourite part of the centre.\e"
+	
+	//relationship---------------------------------------------
+	"\0\s[0]Hey, did we ever tell %(username) how we met?\w8\1\s[10]Yeah, it was in the showers-\w3\0\s[6]\n\nWait! You can't say it like that!\w8\1\s[12]\n\nOh yeahhhh, the first ''official'' time was at the vintage store.\w8\0\s[6]\f[italic,true]\n\nDon't tell people that other thing...\e:chain=relationshipchaina"
+
+	"\1\s[17]Hey... how come you didn't respond to any of my texts last week?\w8\0\s[0]Omigosh, I'm so sorry! I actually broke my phone and had to get a new one.\s[9]\w8\1\s[10]\n\nReally? What happened?\w8\0\s[6]\n\nI got too excited taking photos of this cute milkshake and spilt it all over the screen...\1\s[33]\e"
+	
+	"\1\s[10]\f[italic,true]I don't know what I'd do if I didn't have someone to accompany me in all my hobbies like Dove does\s[12]\e"
+	
+	"\0\s[2]\f[italic,true]I'm so lucky to have found someone so similar to me, hehe.\e"
+}
+
+//chains--------------------------------------------------
+//mundanechaina
+//{{CHAIN
+//	"\0\s[0]How was your sleep last night?\1\w8\s[14]Ugh, the noise in my apartment was terrible! Who knew it was so close to the train line\0\s[9]\e:chain=end"
+//}}CHAIN
+
+relationshipchaina
+{{CHAIN
+	"\0\s[0]So about that time in the showers...\w6\1\s[10]Hey, didn't you say we weren't mentioning that?\w8\0\s[2]\n\nHeheh...\e"
+	
+	"\1\s[10]So I guess I \f[bold,true]can \f[bold,false]say that we met at the vintage store by the pier.\w8\0\s[0]Yup! I couldn't believe another guy who looked just like me would walk in!\s[1]\w8\1\s[12]\n\nHehe, it was so exciting, we became friends right away. I even moved in to your place within two days of knowing you!\w8\0\s[9]\n\nYeah, haha...\e"
+	
+	"\0\s[0]Soooo should we tell %(username) the real story of how we met?\e"
+	
+	"\1\s[10]Wellll it's not like we were actually \f[bold,true]in\f[bold,false] the shower when we first met.\w8\0\s[0]Hmm, you're right, it was in the locker room here after we had both taken one.\w8\1\s[10]\n\nAnd then I saw the fashion posters in your locker and asked if you had an interest.\w8\0\s[0]\n\n Haha and I lied at first because there aren't many guys who look like us and love fashion... I'm glad we had a chance to meet again and become friends\s[2]\1\s[12]\e:chain=end"
+}}CHAIN
+
+//-OnMinuteChange
+//These are time-related bits of dialogue for your ghost to say. If any of them look interesting, uncomment them! I commented them out for simplicity's sake, but it's up to you if you want to use them or not!
+
+//OnMinuteChange
+//{
+//HourCheck
+//--
+//if mikireflag == 1
+// 	{
+// 		MikireTalk
+//	}
+//}
+
+
+//Keeps track of if an hour has passed. Just ignore this.
+HourCheck
+{
+if passmin >= 59
+	{
+		passmin = 0
+		passhour = passhour + 1
+	}
+}
+
+
+OnMinuteChange //This is what will trigger time-based dialogue for your Ghost.
+ {
+	HourCheck //checks to see if an hour has passed, ignore it
+	--
+ 	// if minute == 0 //These ifs will check what time it is. Here, it's seeing if the minute equals zero...
+	// {
+ 		// if hour == 12 //And the hour equals 12, meaning it's noon. You can change this to some other hour if you want.
+		// {
+ 			// "\0\s[0]It's noon.\w8\1\s[15]Let's have a showdown!\w8\0\n\n[half]\s[9]There are no corrals here, dude.\e"
+			// //Replace with appropriate dialogue as you want.
+		// }
+ 		// elseif hour == 0 //If the hour is zero, aka midnight. Again, you can change this to whatever hour you want to check for. This section is flexible! You can also add more elseifs if you want to check for other hours.
+		// {
+ 			// "\0\s[0]It's midnight!\e"
+ 			// "\0\s[0]This is another bit of dialogue for midnight.\w8\1\s[10]BooooOoooOOOooOOOOo.\e"
+ 			// "\0\s[0]This is the third bit of dialogue for midnight.\e"
+			// //Then replace the dialogue with what's appropriate.
+		// }
+		// else
+		// {
+			// "\0\s[0]It's %(hour12)'o clock.\e"
+			// //%(hour12) stores the time. This is a general top of the hour notification. I personally like this because it helps me keep track of time when I've been working on something, so when a ghost is all "Hey it's 3 o clock" I can be like woah really when did that happen. If you think this is annoying though, you can just delete this bit of dialogue to leave this else statement blank, or leave "" in here instead.
+		// }
+	// }
+	// //You can also check for more specific times! For example...
+	// elseif hour == 23 && minute == 55 //this checks to see if the hour is 23 and the minutes are at 55... essentially, 11:55 pm.
+	// {
+		// "\0\s[0]5 minutes to midnight.\e"
+		// //Replace with what you like!
+	// }
+	// elseif hour == 7 && minute == 30 && weekday == 0 //Here, it's checking for a specific time on a specific day. You can add things to your time checks just like this by using the AND operator, && (more about operators at the walkthrough page). This adds up to 7:30 am, Sunday. If you have a favorite TV program on at some time, you could have your ghost comment on when it comes on like this.
+	// {			
+		// "\0\s[0]It's 7:30 on Sunday.\e"
+		// //Replace with what's appropriate.
+	// }
+	// //If you're not interested in these more specific checks, you can delete those last two elseifs and just leave the one for minute==0, or clear them all out as mentioned above, although leave in the HourCheck and mikireflag bits.
+	
+	// 
+	
+	
+	//Advanced users who want to enable the off-screen boundary check = Remember mikireflag up in OnAiTalk? This is the flag that checks for that. You'll want to uncomment this here so it can trigger the dialogue.
+	
+	//Don't touch this part.
+	// elseif mikireflag == 1
+ 	// {
+ 		// MikireTalk
+	// }
+ }
+
+//--OnSecondChange
+//Like the above, this handles what happens every time a second goes by. Most of this you will not have to touch.
+
+OnSecondChange
+ {
+	if passsec == 59
+ 		{
+	 	passsec = 0
+ 		passmin = passmin + 1
+		}
+ 	else
+ 		{
+	 	passsec = passsec + 1
+		}
+		
+		
+	//Advanced users - these next bits are related to the mikireflag and when a character is off screen. Uncomment these if you want to use this feature. 
+		
+	// if mikireflag == 0 && reference1 == 1 //Dialogue for putting them off the screen. You could make this a unique line if you wanted (Like "Hey! What are you doing?"), and have MikireTalk below be for if they continue to be offscreen ("Why are you leaving me out here? Help!" for example). I'll add an example bit of dialogue and comment it out, you can uncomment it and use it if you like, or just leave it out and use MikireTalk below.
+	// {
+		// //"\0\s[0]You've moved me off screen."
+		
+		// MikireTalk
+	// }
+	// if mikireflag == 1 && reference1 == 0 //Dialogue for coming back on the screen
+	// {
+		// EndMikireTalk
+	// }
+	// mikireflag = reference1 //reference1 is if the ghost is offscreen or not
+	
+	
+	//This dialogue is for when the two characters are overlapping each other. Uncomment this if you want to have dialogue for it!
+	
+	// if reference2 == 1
+	// {
+ 		// "\0\s[0]Me and Triangle are overlapping.\w8\1\s[19]That's strange since your resolution is %screenwidthx%screenheight, %(username). Shouldn't we have enough space?\4\e"
+		
+		// //You can see here the use of two envelopes, screenwidth and screenheight, to tell the user their resolution. Oddly, they are not in parentheses. I'm not sure why this is, but they don't display right otherwise. An odd quirk with these two envelopes.
+		// //Note also how Triangle moves away at the end of the dialogue. This is due to the \4 tag. That will make any one character move away from the other if they are able. I talked about this tag and its counterpart tag \5 in the SakuraScript page on the walkthrough.
+	// }
+ }
+
+ //---- MikireTalk ---------------------------------------------------------------------
+ //MikireTalk is dialogue for when your main character is off-screen. Like if you dragged Girl over to the side of your monitor until she was partially concealed by it. Advanced users, make sure to uncomment this along with all the other mikire related things in here I've pointed out.
+ 
+// MikireTalk
+ // {
+	// "\0\s[0]I'm off the screen.\w8\1\s[10]You can push Ctrl-Shift-F12 to bring her back."
+	// //Note the hotkey combo Triangle mentions. He's telling the truth, that should bring her back on the screen.
+ // }
+
+ //----EndMikireTalk--------------------------------------------------------------------
+ //For after you bring the character back on screen.
+ 
+// EndMikireTalk
+ // {
+	// "\0\s[0]I'm no longer off the screen.\w8\1\s[19]What a shame.\w8\0\s[9]\n\n[half]Shut up.\e"
+ // }
+
+
+//**** OnSurfaceRestore *****************************************************************
+//OnSurfaceRestore is a handy function. What this does is that after a short period of time, the ghost will go back to its default pose, so you won't have a ghost stuck in one expression for too long. It's also helpful if you've made one of the characters disappear using \s[-1] in dialogue and didn't bring them back at the end of it. This will do that for you.
+//I'm going to comment out the if/else statements in this because the circumstances in which they'd come up seem pretty unlikely and unnecessary if you're just going to be making a simple ghost. You can just leave this function alone and move on if you want. However, if you do want to use them, just uncomment the lines by deleting the slashes and fill in the info as you need.
+
+//*********************Advanced User Info*******************************
+//You can put if statements in OnSurfaceRestore to make exceptions for certain poses, or to make sure that once they're in a certain pose, they stay in that pose. For example, if you turn my Hunter and Smoker ghost into eggplants, there's a check for the their eggplant pose numbers to make sure they STAY eggplants when OnSurfaceRestore is called.
+//You can also use OnSurfaceRestore to clean up things that might be left on the screen, primarily from using p[number]\s[] to call up other objects or characters. Just make sure to add a p[number]\s[-1] to OnSurfaceRestore, and that should get rid of it each time the ghost cleans itself up.
+//***********************************************************************
+
+OnSurfaceRestore
+ {
+ 	//if reference0 == 4 || reference0 == 6 //This is checking what poses they are in. This looks to see if Girl is in pose 4 or pose 6, since she is reference0.
+ 	//{
+ 	//"\1\s[10]You're in a sad pose.\w8\0\s[0]I'll go back to normal then.\e"
+ 	//}
+ 	//elseif reference1 == 14 || reference1 == 16 //This is doing the same but for Triangle, since he's reference1. It looks to see if he's in pose 14 or post 16.
+ 	//{
+ 	//"\0\s[0]You look sad.\w8\1\s[10]I'll go back to normal.\e"
+ 	//}
+ 	//else
+ 	//{
+	"\0\s[0]\1\s[10]\e"
+	//}
+ }
+
+ 
+ //--OnKeyPress
+ //This defines the hotkeys your ghost will use. You can change these to whatever you want, but I don't really know why you would. I'd just leave this alone. Advanced Users can add new hotkeys attached to whatever function if you want.
+ 
+OnKeyPress
+{
+	if reference0 == "t"
+	{
+	OnAiTalk
+	}
+	elseif reference0 == "r"
+	{
+	OnLastTalk
+	}
+	elseif reference0 == "f1"
+	{
+	"\![open,readme]"
+	}
+}

@@ -1,0 +1,237 @@
+//---------------------------Surfaces.txt--------------------------
+
+//dove poses
+//dove default 
+surface0
+{
+	//head collision
+	collision0,143,5,348,126,Head
+	
+	//set up for shell base image
+	element0,overlay,surface0.png,0,0
+
+	//blinking
+	0interval,random,4
+	0pattern0,-1,10,overlay,0,0
+	0pattern1,1002,5,overlayfast,0,0
+	0pattern2,1001,10,overlayfast,0,0
+	0pattern3,-1,3,overlay,0,0
+
+	//talking
+	1interval,talk,4
+	1pattern0,0,0,alternativestart,[2.3.4]
+
+	2interval,never
+	2pattern0,1102,10,overlay,0,0
+	2pattern1,1101,13,overlay,0,0
+	2pattern2,-1,10,overlay,0,0
+
+	3interval,never
+	3pattern0,1101,14,overlay,0,0
+	3pattern1,-1,10,overlay,0,0
+
+	4interval,never
+	4pattern0,1102,14,overlay,0,0
+	4pattern1,-1,10,overlay,0,0
+}
+
+//dove silly pose
+surface1
+{
+element0,overlay,surface1.png,0,0
+}
+
+//dove grin pose
+surface2
+{
+element0,overlay,surface2.png,0,0
+}
+
+//dove sad pose
+surface22
+{
+	element0,overlay,surface22.png,0,0
+}
+
+//dove ugh pose
+surface3
+{
+element0,overlay,surface3.png,0,0
+}
+
+//dove lech pose
+surface4
+{
+element0,overlay,surface4.png,0,0
+}
+
+//dove dreamy pose
+surface5
+{
+element0,overlay,surface5.png,0,0
+}
+
+//dove pout pose
+surface6
+{
+element0,overlay,surface6.png,0,0
+}
+
+//dove blush pose
+surface7
+{
+element0,overlay,surface7.png,0,0
+}
+
+//dove happy pose
+surface8
+{
+element0,overlay,surface8.png,0,0
+}
+
+//dove stress pose
+surface9
+{
+element0,overlay,surface9.png,0,0
+}
+
+
+//love poses
+
+//love default
+surface10
+{
+	//head collision
+	collision0,151,3,358,105,Head
+	
+	//default image setup
+	element0,overlay,surface10.png,0,0
+
+	//blinking
+	0interval,random,4
+	0pattern0,-1,10,overlay,0,0
+	0pattern1,2002,5,overlayfast,0,0
+	0pattern2,2001,10,overlayfast,0,0
+	0pattern3,-1,3,overlay,0,0
+
+	//love talk
+	1interval,talk,4
+	1pattern0,0,0,alternativestart,[2.3.4]
+
+	2interval,never
+	2pattern0,2202,10,overlay,0,0
+	2pattern1,2201,13,overlay,0,0
+	2pattern2,-1,10,overlay,0,0
+
+	3interval,never
+	3pattern0,2201,14,overlay,0,0
+	3pattern1,-1,10,overlay,0,0
+
+	4interval,never
+	4pattern0,2202,14,overlay,0,0
+	4pattern1,-1,10,overlay,0,0
+}
+
+//love silly pose
+surface11
+{
+element0,overlay,surface11.png,0,0
+}
+
+//love grin pose
+surface12
+{
+element0,overlay,surface12.png,0,0
+}
+
+//love sad pose
+surface13
+{
+element0,overlay,surface13.png,0,0
+}
+
+//love ugh pose
+surface14
+{
+element0,overlay,surface14.png,0,0
+}
+
+//love lech pose
+surface15
+{
+element0,overlay,surface15.png,0,0
+}
+
+//love dreamy pose
+surface16
+{
+element0,overlay,surface16.png,0,0
+}
+
+//love pout pose
+surface17
+{
+element0,overlay,surface17.png,0,0
+}
+
+//love blush pose
+surface18
+{
+element0,overlay,surface18.png,0,0
+}
+
+//love happy pose
+surface19
+{
+element0,overlay,surface19.png,0,0
+}
+
+surface33
+{
+	element0,overlay,surface33.png,0,0
+}
+
+//And that's it! We're done! But before we go, there are a few more little things you may want to think about.
+
+
+//--surface.append-------------------------------------------------------------------
+//This function is primarily for advanced users, so you can skip it if it seems too scary to you. Otherwise, read on. It may be useful.
+
+//Surface.append basically applies the coding within the brackets to the poses specified in the number range. Specifically in this case it applies to collisions. If the collision areas for your ghost don't change very much from pose to pose, then you can set them here for multiple surfaces at once and save yourself some time.
+//I'm not actually going to use surface.append since Girl and Triangle move around too much for their collisions to be that consistent between poses, but it's something could potentially come in handy for advanced users or ghost makers who have very stationary ghosts, so I'll leave it here and just append it to surfaces that don't exist so it won't get in the way. If you want to use this, study this example and see how it can apply to your own ghost.
+
+surface.append500-590 //this is appending this code to Surface500 through Surface590.
+//There are actually a few special ways you can refine this! For example, surface.append500-590,205 would append the code to Surface500 to Surface590, as well as Surface205. 
+//surface.append500-590,205,!507-509 it would do the same, except it would skip Surfaces507 through 509.
+//you can have multiple surface.appends as well, if you want to append one set of code to one range of surfaces and another to another. For example, one set of collisions to your main character and one to your side character.
+{
+collision0,15,16,111,48,Face
+collision1,40,50,102,84,Point
+
+//Because this is under surface.append, that means that these collisions are being set for every surface between the number range specified, in this case every Surface from 500 to 590. Make sure to put surface.append at the end of your file, so it can append the values to surfaces that exist.
+
+//--bind-------------------------------------------------------------------------------
+
+//Bind is an interval function only used for dress-up items, therefore if your ghost has no dress-up items, you will not need to bind anything and can safely disregard this. See the walkthrough page about clothing for more details about bind. I'll comment these out since the template won't have clothing items.
+
+//51interval,bind
+//51pattern0,999,2,add,0,0
+
+//One final note on bind, note that it is also under surface.append along with the collisions up there. Meaning that this clothing would bind across those multiple surfaces just like the collisions. You can set up bind individually for a pose I think, but I honestly haven't messed around with it very much.
+
+//You can use surface.append to technically apply anything across multiple poses, I'm pretty sure... even images. I haven't messed with this too much myself, but I'm pretty sure it's possible. As with many things with ghosts, this can come in handy if you're creative.
+}
+
+//change cursor when interact with collision
+sakura.cursor 
+{ 
+mouseup0,Head,system:hand 
+mousedown0,Head,system:finger 
+} 
+
+//" "
+kero.cursor 
+{ 
+mouseup0,Head,system:hand 
+mousedown0,Head,system:finger 
+} 
